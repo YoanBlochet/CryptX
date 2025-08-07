@@ -1,4 +1,4 @@
-## 🛡️ Projet de Cryptographie en Python
+## 🛡️ CryptX - Projet de Cryptographie en Python - V.0.2
 
 <p align="center">
   <a href="https://developing-draw-3a8.notion.site/23d4c7b38e608098a12ae04bac41f98f?v=23d4c7b38e6080d78566000ca677c614&pvs=74">
@@ -26,16 +26,25 @@ Le programme permet d'appliquer plusieurs méthodes de chiffrement/déchiffremen
 - Deux modes :
   - **ASCII 128** : utilise tous les caractères ASCII (peut produire des caractères invisibles).
   - **ASCII Imprimable** : limite aux 95 caractères visibles (ASCII 32 à 126 inclus).
+- Supporte lecture/écriture depuis ou vers un fichier texte.
 
 ### 2. 🔑 Chiffrement de Vigenère
 - Chiffrement par clé (texte).
 - Deux versions :
   - **ASCII 128**
   - **ASCII Imprimable**
+- Supporte :
+  - lecture du texte depuis un fichier
+  - import/export de la clé depuis un fichier texte (clair ou chiffré)
+  - écriture du résultat dans un fichier
 
 ### 3. 🎲 Substitution Aléatoire
 - Génère une clé aléatoire de substitution (bijective* sur les caractères imprimables).
 - Permet le chiffrement et déchiffrement en inversant la clé.
+- Supporte :
+  - lecture du texte depuis un fichier
+  - import/export de la clé depuis un fichier texte (clair ou chiffré)
+  - écriture du résultat dans un fichier
 
 <sup>*</sup> *Oui, je suis un matheux* 😉
 
@@ -58,11 +67,14 @@ python main.py
 3. Substitution aléatoire
 4. Quitter
 Votre choix : 1
-Texte : Je m'appelle Yoan & toi ?
-Décalage (entier positif ou négatif) : 5
-Déchiffrer ? (o/n) : n
-Utiliser seulement les caractères imprimables ? (o/n) : o
-Résultat : Oj%r,fuujqqj%^tfs%+%ytn%D
+Lire le texte depuis un fichier (o/n) : o
+Chemin du fichier texte : test.txt
+Décalage (entier positif ou négatif) : 8 
+Déchiffrer (o/n) : n
+Utiliser seulement les caractères imprimables (o/n) : n
+Résultat : Jwvrw}z(è(|w}{()
+Sauvegarder le résultat dans un fichier (o/n) : o
+Chemin du fichier de sortie : encrypted.txt
 ```
 
 ---
@@ -71,7 +83,9 @@ Résultat : Oj%r,fuujqqj%^tfs%+%ytn%D
 
 ```
 .
-├── main.py                  # Menu principal interactif (point d'entrée)
+├── main.py                  # Point d'entrée (le fichier à éxécuter)
+├── menu.py                  # Menus principaux interactif (console)
+├── utils.py                 # Fonctions utilitaires (lecture/écriture, validation, etc.)
 ├── ciphers/                 # Contient toutes les fonctions de chiffrement/déchiffrement
 │   └── substitution.py      # Fonctions de chiffrement/déchiffrement par substitution
 └── README.md                # Le fichier que vous lisez 😆
@@ -81,9 +95,8 @@ Résultat : Oj%r,fuujqqj%^tfs%+%ytn%D
 
 ### 📆 Améliorations futures
 
-* Nouvelles options de chiffrement **Base64**, **XOR**...
-* Chiffrement/déchiffrement de **fichiers texte**.
-* Sauvegarde/exportation des clés de substitution ou des messages chiffrés.
+* Nouvelles options de chiffrement **Base64** (oui je sais, c'est pas vraiment du chiffrement, mais de l'encodage), **XOR**...
+* Commencer à jouer avec les maths pour chiffrer/déchiffrer des données...
 * Hashage de texte et/ou fichier.
 * Analyse & attaques pour decrypter les messages chiffrés (analyse fréquentielle; brute force, Test de Kasiski...).
 * Interface graphique (UI dans une version future 😉).
